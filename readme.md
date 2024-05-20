@@ -120,13 +120,19 @@ This is a simple Vehicle Management API built with Node.js and MongoDB. The API 
 
 You can use Postman or any other API client to test the endpoints. Make sure your server is running before making requests.
 
+### Importing Postman Collection
+
+To make it easier to test the API, you can use the provided Postman collection.
+
+1. Open Postman.
+2. Click on the `Import` button in the top left corner.
+3. In the `Import` window, select the `Upload Files` tab.
+4. Click on `Choose Files` and navigate to the root directory of this project.
+5. Select the file named `INF 462 TP2.postman_collection`.
+6. Click on `Open` to import the collection.
+
+You should now see the collection in your Postman app, and you can use it to test the various endpoints of the Vehicle Management API.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-### Additional Notes:
-
-- Ensure your `.env` file is correctly set up and in the root directory.
-- The `docker-compose.yml` and `Dockerfile` are configured to use the correct versions and dependencies.
-- The `vehicle-service` container relies on the `mongodb` container. Docker Compose ensures that the MongoDB container is up and running before the Node.js container starts.
