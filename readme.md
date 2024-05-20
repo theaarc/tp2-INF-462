@@ -24,9 +24,8 @@ This is a simple Vehicle Management API built with Node.js and MongoDB. The API 
 
 ### Prerequisites
 
-- Node.js and npm installed on your machine
-- MongoDB installed and running
-- Docker and Docker Compose installed (optional, for containerization)
+- Node.js and npm installed on your machine (for local development)
+- Docker and Docker Compose installed (for containerization)
 
 ### Steps
 
@@ -37,35 +36,25 @@ This is a simple Vehicle Management API built with Node.js and MongoDB. The API 
    cd vehicle-management-api
    ```
 
-2. Install the dependencies:
-
-   ```sh
-   npm install
-   ```
-
-3. Create a `.env` file in the root directory and add the following variables:
+2. Create a `.env` file in the root directory and add the following variables:
 
    ```plaintext
-   MONGODB_URI=mongodb://localhost:27017/vehicle_management
+   MONGODB_URI=mongodb://mongodb:27017/vehicle_management
    PORT=3000
    ```
 
-4. Start MongoDB (if not using Docker):
+3. Build and start the Docker containers:
 
    ```sh
-   mongod
+   docker-compose up --build
    ```
 
-5. Start the server:
+   This will start both MongoDB and the Node.js server in Docker containers.
+
+4. To stop the containers, use:
 
    ```sh
-   node index.js
-   ```
-
-6. Alternatively, you can use Docker Compose to start both MongoDB and the Node.js server:
-
-   ```sh
-   docker-compose up
+   docker-compose down
    ```
 
 ## API Endpoints
@@ -135,3 +124,9 @@ You can use Postman or any other API client to test the endpoints. Make sure you
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
+
+### Additional Notes:
+
+- Ensure your `.env` file is correctly set up and in the root directory.
+- The `docker-compose.yml` and `Dockerfile` are configured to use the correct versions and dependencies.
+- The `vehicle-service` container relies on the `mongodb` container. Docker Compose ensures that the MongoDB container is up and running before the Node.js container starts.

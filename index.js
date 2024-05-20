@@ -1,24 +1,17 @@
-// index.js
-const express = require('express');
-const connectDB = require('./config/database');
-const vehicleRoutes = require('./routes/vehicle');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
-const app = express();
-
-// Connect to MongoDB
-connectDB();
-
-// Middleware
-app.use(express.json());
-
-// Routes
-app.use('/api', vehicleRoutes);
+require('dotenv').config();
+const mongoose = require('mongoose');
+const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}).catch(err => {
+    console.error('Failed to connect to MongoDB', err);
 });
